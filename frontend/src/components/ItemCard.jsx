@@ -1,3 +1,4 @@
+// components/ItemCard.js
 import { Link } from "react-router-dom";
 
 function ItemCard({ item, onDelete }) {
@@ -11,6 +12,8 @@ function ItemCard({ item, onDelete }) {
       <h3>{item.name}</h3>
       <p><strong>Category:</strong> {item.category}</p>
       <p><strong>Price:</strong> ${item.price}</p>
+      {/* --- NEW FIELD DISPLAYED HERE --- */}
+      <p><strong>Reviews:</strong> {item.reviewCount || 0} reviews</p>
       <p>{item.description}</p>
 
       <div className="card-actions">

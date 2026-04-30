@@ -1,3 +1,4 @@
+// models/Item.js
 import mongoose from "mongoose";
 
 const itemSchema = new mongoose.Schema(
@@ -16,6 +17,12 @@ const itemSchema = new mongoose.Schema(
       type: Number,
       required: [true, "Price is required"],
       min: [0, "Price cannot be negative"],
+    },
+    // --- NEW FIELD ADDED HERE ---
+    reviewCount: {
+      type: Number,
+      default: 0,
+      min: [0, "Review count cannot be negative"],
     },
     description: {
       type: String,

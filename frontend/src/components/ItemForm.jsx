@@ -1,3 +1,4 @@
+// components/ItemForm.js
 import { useState } from "react";
 
 function ItemForm({ initialValues, onSubmit, submitText }) {
@@ -6,6 +7,7 @@ function ItemForm({ initialValues, onSubmit, submitText }) {
       name: "",
       category: "",
       price: "",
+      reviewCount: 0, // Initialize new field
       description: "",
       imageUrl: "",
     }
@@ -21,6 +23,7 @@ function ItemForm({ initialValues, onSubmit, submitText }) {
     onSubmit({
       ...formData,
       price: Number(formData.price),
+      reviewCount: Number(formData.reviewCount), // Ensure it's a number
     });
   };
 
@@ -34,14 +37,28 @@ function ItemForm({ initialValues, onSubmit, submitText }) {
       <label>Category</label>
       <input name="category" value={formData.category} onChange={handleChange} required />
 
-      <label>Price</label>
-      <input
-        type="number"
-        name="price"
-        value={formData.price}
-        onChange={handleChange}
-        required
-      />
+      <div style={{ display: 'flex', gap: '1rem' }}>
+        <div style={{ flex: 1 }}>
+          <label>Price ($)</label>
+          <input
+            type="number"
+            name="price"
+            value={formData.price}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div style={{ flex: 1 }}>
+          <label>Customer Review Count</label>
+          <input
+            type="number"
+            name="reviewCount"
+            value={formData.reviewCount}
+            onChange={handleChange}
+            min="0"
+          />
+        </div>
+      </div>
 
       <label>Description</label>
       <textarea
